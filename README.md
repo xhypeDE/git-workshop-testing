@@ -165,8 +165,8 @@ Um Änderungen im aktuellen Branch auch auf dem remote-repo (GitLab) zu pushen m
 Um einen Branch mit einem anderen Branch wieder zu vereinen wird der Command `git merge <branchname>` ausgeführt. Wichtig hierbei ist das <branchname> der Branch ist der in den aktuellen aktiven Branch gemerged wird. Falls also ein Branch in Main gemerged werden soll, wird zuerst mit `git checkout main` in den Main Branch gewechselt bevor der Command ausgeführt wird.
 
 
-# Merge Konflikt
-![Merge Konflikt Bild](MergeKonflikt.png)
+### Merge Konflikt
+![Merge Konflikt Bild](MergeKonflikt.jpg)
 Beim Mergen kann es zu einem Merge-Konflikt vorkommen.
 Dies passiert meistens, wenn eine Datei von zwei verschiedenen Entwicklern oder auf verschiedenen Branches verändert wurde und git nicht selber weiß wie dieser Konflikt zu lösen ist.
 Der Konflikt muss manuell in der Datei gelöst werden.
