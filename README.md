@@ -140,7 +140,7 @@ Um den Verlauf von Commits anzuschauen kann man den Command `git log`nutzen
 Ein weiterer nützlicher Command ist `git diff` hiermit kann man sich Änderungen anzeigen lassen, die noch nicht in die Staging Area hereingenommen wurden.
 
 ## Branches
-![Git-Branch-Image](git-branch.png)
+![Git-Branch-Image](git-branch.jpg)
 Einer der wichtigsten Features von Git sind die sogenannten Branches.
 Ein Branch represäntiert eine unabhängige Entwicklungslinie. Mit Branches kann die Entwicklung verschiedener Features abgetrennt vom "Main" Branch also dem Hauptbranch parallel durchgeführt werden und zu einem späteren Zeitpunkt mit einem **Merge** in den Main Branch integriert werden.
 
