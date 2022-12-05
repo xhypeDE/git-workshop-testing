@@ -117,7 +117,52 @@ Durch den Command `git add <dateiname.txt>` wird eine Datei in dieser Staging Ar
 > Tipp: Mit `git add --all` können alle (modifizierten, neuen und gelöschten) Dateien erfasst werden.
 
 ### Status
-Mit dem Command `git status` lässt sich der aktuelle Status der Staging Area ausgeben
+Mit dem Command `git status` lässt sich der aktuelle Status des Projektordners und der Veränderungen anzeigen.
+
+### Commit
+Wenn unsere Datei(en) in Staging erfasst ist können wir nun diese mit dem Command `git commit -m <Commit Nachricht>` in das lokale repository erfassen.
+
+Nach der Bestätigung des Comands muss ein weiterer Command ausgeführt werden um die Änderungen auch auf dem remote repository zu erfassen (Gitlab).
+
+### Push
+Um unsere Änderungen jetzt auf den remote repository zu erfassen nutzen wir den Command `git push`
+
+> Hinweis: Falls hier ein Fehler auftritt liegt das höchstwahrscheinlich daran, dass ein anderes Workshopmitglied schon ein commit gepushed hat und die Dateien auf dem lokalen repository nicht mehr die gleichen sind wie vor eurem versuchten push.
+
+>### Pull
+> Hierfür könnt ihr den Command `git pull` nutzen um die letzten Änderungen zu holen und danach wieder mit `git push` das repository pushen.
+
+
+## Log
+Um den Verlauf von Commits anzuschauen kann man den Command `git log`nutzen
+
+## Diff
+Ein weiterer nützlicher Command ist `git diff` hiermit kann man sich Änderungen anzeigen lassen, die noch nicht in die Staging Area hereingenommen wurden.
+
+## Branches
+![Git-Branch-Image](git-branch.png)
+Einer der wichtigsten Features von Git sind die sogenannten Branches.
+Ein Branch represäntiert eine unabhängige Entwicklungslinie. Mit Branches kann die Entwicklung verschiedener Features abgetrennt vom "Main" Branch also dem Hauptbranch parallel durchgeführt werden und zu einem späteren Zeitpunkt mit einem **Merge** in den Main Branch integriert werden.
+
+#### Branch Commands
+`git branch` - Liste aller Branches und des aktuellen aktiven Branch
+
+
+`git branch <branch>` - Erstellt einen neuen branch mit dem <branch>
+> Hinweis: Es wird hier jedoch nicht in den neu erstellten Branch gewechselt.
+> Um den Branch zu wechseln kann man den Command `git checkout <branchname>` nutzen.
+
+
+`git branch -d <branchname>` - Löscht den Branch mit dem Namen "branchname"
+
+`git branch -m <branchname>` - Nennt den aktuellen Branch um in "branchname"
+
+Um Änderungen im aktuellen Branch auch auf dem remote-repo (GitLab) zu pushen muss folgender Command benutzt werden:
+`git push --set-upstream origin <branchname>`
+
+
+## Merging
+Um einen Branch mit einem anderen Branch wieder zu vereinen wird der Command `git merge <branchname>` ausgeführt. Wichtig hierbei ist das <branchname> der Branch ist der in den aktuellen aktiven Branch gemerged wird. Falls also ein Branch in Main gemerged werden soll, wird zuerst mit `git checkout main` in den Main Branch gewechselt bevor der Command ausgeführt wird.
 
 
 
