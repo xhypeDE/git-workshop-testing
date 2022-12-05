@@ -32,3 +32,139 @@ Bei Problemen könnt ihr uns gerne über E-Mail oder Webex kontaktieren.
 
 Mit freundlichen Grüßen
 Christian Tolu & Marwand Ayubi
+
+---
+
+# Workshop Phase 1
+
+## Getting started
+1. Projektlink kopieren
+2. Eingeabeaufforderung / Terminal oder eine andere bevorzugte Terminalanwendung öffnen
+
+## Basic Commands
+Um im Terminal zurecht zukommen sollten wir die Grundlegenden Commands kennen und verstehen. Diese werden hier aufgeführt und können während des Workshops als Cheat Sheet genutzt werden.
+
+#### Windows
+
+
+
+## Cloning
+
+Das klonen von bestehenden Projekten ist einer der grundlegenden Commands bei Git. Beim Klonen wird eine Kopie des Verzeichnisses heruntergeladen und lokal zur Bearbeitung gespeichert. Hierbei wird gleichzeitig das Verzeichnis des Projekts lokal als Git Repository initialisiert um weitere Git-Operationen zu ermöglichen.
+
+Das Klonen kann bei GitLab über zwei verschiedene Protokolle durchgeführt werden. Grundsätzlich sind das HTTPS und SSH.
+
+SSH:
+Hierfür muss ein SSH-Schlüssel generiert werden und im GitLab hinterlegt werden. Der Vorteil hierbei ist: nach anlegen des SSH-Keys wird dieser zur authentifizierung genutzt und man muss sein Passwort nicht jedesmal erneut eingeben.
+
+HTTPS:
+Die eher verbreitetere Methode zum Klonen ist das nutzen des HTTPS Protokolls. Hier wird der Nutzer über Benutzername und Passwort authentifiziert.
+
+Zur einfachheit nutzen wir das HTTPS Protokoll.
+
+Zunächst müssen wir auf unserem PC in das gewünschte Verzeichnis navigieren indem wir das Projekt kopieren wollen.
+
+Wenn wir hier im richtigen Verzeichnis sind können wir anschließend das Projekt mit dem Command:
+`git clone 'URL des Repositorys'`
+klonen. 
+
+> #### Achtung!
+> Da aufgrund des Hackerangriffs des Zertifikat von GitLab abgelaufen ist und nicht erneuert werden kann müssen wir den Command abändern. Beim Klonen wird nämlich aufgrund des HTTPS Protokolls das Zertifikat auf Gültigkeit überprüft. In diesem Fall wissen wir, dass das Zertifikat abgelaufen ist. Dieser Kommand sollte aus Sicherheitsgründen im Normalfall nie genutzt werden.
+
+`git clone git -c http.sslVerify=false https://gitlab.win.hs-heilbronn.de/mayubi/fsew-git-workshop.git`
+
+> #### Erklärung:
+> * Der Befehl git sagt der Eingabeaufforderung das git verwendet werden soll.
+> * Der Befehl clone gibt die Anweisung das ein Repository geklont werden soll. 
+> * Mit dem sogenannten Flag "-c" wird die Konfiguration angepasst.
+> * Nach dem Flag wird erwartet welche Konfiguration angepasst werden soll.
+> * Wir möchten mit "http.sslVerify=false" die Prüfung des Zertifikats abschalten. 
+
+Nach der Eingabe des Kommands wird eventuell euer Benutzername und Passwort für GitLab abgefragt. Anschließend wird das Projekt im aktuellen Verzeichnis heruntergeladen.
+
+## Initializing
+Das initialisieren eines Git Repositories wird dann wichtig, wenn wir einen bestehenden Ordner haben oder lokal ein leeres Git Repository aufsetzen wollen, den wir mit Git als Versionskontrollsystem tracken wollen.
+
+Zunächst müssen wir auf unserem PC in das gewünschte Verzeichnis navigieren indem wir ein Projekt initialisieren wollen.
+
+Dann nutzen wir folgenden Command:
+`git init`
+
+## Add - Commit - Push - Pull
+
+
+![Git Data Transport](cZkcV.jpg)
+
+
+Angenommen das geklonte Projekt wäre ein Softwareprodukt und wir möchten nun eine neue Datei teilen und dem gesamten Entwicklungsteam bereistellen.
+
+Erstmal müssen wir hierfür eine neue Datei erstellen. Um es einfach zu halten erstellen wir eine simple Textdatei im Ordner des geklonten Projekts.
+
+#### Windows
+* vom Terminal aus mit dem Command `start .` das Fenster im Explorer öffnen
+* mit Rechtsclick -> Neu -> Neues Textdokument die Textdatei erstellen
+* in die Textdatei eine Nachricht reinschreiben und das Dokument mit eurem Namen.txt abspeichern
+
+#### Mac
+* vom Terminal aus mit dem Command `nano <euerName.txt>` die Textbearbeitung öffnen
+* hier eine Nachricht schreiben
+* die Datei mit dem Shortcut CTRL + O speichern und mit CTRL + X schließen
+
+### Die Staging Area
+Diese "Area" ist der Bereich in dem Änderungen die im nächsten Commit erfasst werden sollen gespeichert werden.
+
+Durch den Command `git add <dateiname.txt>` wird eine Datei in dieser Staging Area erfasst.
+> Tipp: Mit `git add --all` können alle (modifizierten, neuen und gelöschten) Dateien erfasst werden.
+
+### Status
+Mit dem Command `git status` lässt sich der aktuelle Status des Projektordners und der Veränderungen anzeigen.
+
+### Commit
+Wenn unsere Datei(en) in Staging erfasst ist können wir nun diese mit dem Command `git commit -m <Commit Nachricht>` in das lokale repository erfassen.
+
+Nach der Bestätigung des Comands muss ein weiterer Command ausgeführt werden um die Änderungen auch auf dem remote repository zu erfassen (Gitlab).
+
+### Push
+Um unsere Änderungen jetzt auf den remote repository zu erfassen nutzen wir den Command `git push`
+
+> Hinweis: Falls hier ein Fehler auftritt liegt das höchstwahrscheinlich daran, dass ein anderes Workshopmitglied schon ein commit gepushed hat und die Dateien auf dem lokalen repository nicht mehr die gleichen sind wie vor eurem versuchten push.
+
+>### Pull
+> Hierfür könnt ihr den Command `git pull` nutzen um die letzten Änderungen zu holen und danach wieder mit `git push` das repository pushen.
+
+
+## Log
+Um den Verlauf von Commits anzuschauen kann man den Command `git log`nutzen
+
+## Diff
+Ein weiterer nützlicher Command ist `git diff` hiermit kann man sich Änderungen anzeigen lassen, die noch nicht in die Staging Area hereingenommen wurden.
+
+## Branches
+![Git-Branch-Image](git-branch.png)
+Einer der wichtigsten Features von Git sind die sogenannten Branches.
+Ein Branch represäntiert eine unabhängige Entwicklungslinie. Mit Branches kann die Entwicklung verschiedener Features abgetrennt vom "Main" Branch also dem Hauptbranch parallel durchgeführt werden und zu einem späteren Zeitpunkt mit einem **Merge** in den Main Branch integriert werden.
+
+#### Branch Commands
+`git branch` - Liste aller Branches und des aktuellen aktiven Branch
+
+
+`git branch <branch>` - Erstellt einen neuen branch mit dem <branch>
+> Hinweis: Es wird hier jedoch nicht in den neu erstellten Branch gewechselt.
+> Um den Branch zu wechseln kann man den Command `git checkout <branchname>` nutzen.
+
+
+`git branch -d <branchname>` - Löscht den Branch mit dem Namen "branchname"
+
+`git branch -m <branchname>` - Nennt den aktuellen Branch um in "branchname"
+
+Um Änderungen im aktuellen Branch auch auf dem remote-repo (GitLab) zu pushen muss folgender Command benutzt werden:
+`git push --set-upstream origin <branchname>`
+
+
+## Merging
+Um einen Branch mit einem anderen Branch wieder zu vereinen wird der Command `git merge <branchname>` ausgeführt. Wichtig hierbei ist das <branchname> der Branch ist der in den aktuellen aktiven Branch gemerged wird. Falls also ein Branch in Main gemerged werden soll, wird zuerst mit `git checkout main` in den Main Branch gewechselt bevor der Command ausgeführt wird.
+
+
+
+
+
