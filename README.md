@@ -45,7 +45,39 @@ Christian Tolu & Marwand Ayubi
 Um im Terminal zurecht zukommen sollten wir die Grundlegenden Commands kennen und verstehen. Diese werden hier aufgeführt und können während des Workshops als Cheat Sheet genutzt werden.
 
 #### Windows
+`cd <Pfad>` - In den Pfad navigieren (Vollen Pfad oder Name eines Ordners angeben)
 
+`cd ..` - In das vorherige Verzeichnis navigieren
+
+`dir` - Inhalt des aktuellen Verzeichnis anzeigen
+
+`dir -hidden` - Inhalt des aktuellen Verzeichnis anzeigen, inklusive versteckter Dateien
+
+`mkdir <Ordername>` - Neuen Ordner mit "Ordername" erstellen
+
+`start .` - Explorer Fenster im aktuellen Verzeichnis öffnen
+
+`cat <Dateiname>` - Inhalt der Datei ausgeben (bei Textbasierten Dateien)
+
+`↑ Taste` - Den letzten Command holen
+
+#### Mac
+
+`cd <Pfad>` - In den Pfad navigieren (Vollen Pfad oder Name eines Ordners angeben)
+
+`cd ..` - In das vorherige Verzeichnis navigieren
+
+`ls` - Inhalt des aktuellen Verzeichnis anzeigen
+
+`ls -a` - Inhalt des aktuellen Verzeichnis anzeigen, inklusive versteckter Dateien
+
+`mkdir <Ordername>` - Neuen Ordner mit "Ordername" erstellen
+
+`open .` - Finder Fenster im aktuellen Verzeichnis öffnen
+
+`cat <Dateiname>` - Inhalt der Datei ausgeben (bei Textbasierten Dateien)
+
+`↑ Taste` - Den letzten Command holen
 
 
 ## Cloning
@@ -160,6 +192,10 @@ Ein Branch represäntiert eine unabhängige Entwicklungslinie. Mit Branches kann
 Um Änderungen im aktuellen Branch auch auf dem remote-repo (GitLab) zu pushen muss folgender Command benutzt werden:
 `git push --set-upstream origin <branchname>`
 
+---
+
+# Workshop Phase 2
+
 
 ## Merging
 Um einen Branch mit einem anderen Branch wieder zu vereinen wird der Command `git merge <branchname>` ausgeführt. Wichtig hierbei ist das <branchname> der Branch ist der in den aktuellen aktiven Branch gemerged wird. Falls also ein Branch in Main gemerged werden soll, wird zuerst mit `git checkout main` in den Main Branch gewechselt bevor der Command ausgeführt wird.
@@ -185,7 +221,7 @@ Um euch zu zeigen wie man einen Konflikt im Terminal löst werden wir erstmal ei
 Jetzt sollte es zu einer Fehlermeldung kommen. Der automatische merge ist fehlgeschlagen und ein Mergekonflikt ist vorhanden.
 Wenn man den Befehl `git mergetool` eingibt kommt, kann man mit "Enter" vim starten um den Konflikt zu lösen. 
 
-# Commits rückgängig machen
+## Commits rückgängig machen
 `git revert <commit>` - Erstellt ein Commit bei dem die Änderungen aus dem angegebenen Commit rückgängig gemacht werden.
 
 `git checkout <commit>` - Macht Änderungen nach diesem Commit rückgängig
@@ -196,3 +232,14 @@ modes: soft, mixed, hard
 soft: Bringt alle Änderungen in den Staged-Bereich  
 mixed: Alle Änderungen sind nicht im Staged-Bereich  
 hard: Alle Änderungen werden gelöscht
+
+# Aufgabe:
+Um das gelernte auch einmal anzuwenden würden wir gerne zwei Gruppen bilden und eine Aufgabe starten.
+
+1. Zwei Gruppen bilden
+2. Im Terminal zum geklonten Git-Repository navigieren
+3. In den Ordner Feedback navigieren
+5. In den jeweiligen Gruppenbranch wechseln
+6. Im Ordner Feedback eine Textdatei erstellen mit eurem Feedback als Inhalt
+7. Pull -> Add -> Commit -> Push
+8. Wenn beide Gruppen fertig sind wird das Feedback gemerged
