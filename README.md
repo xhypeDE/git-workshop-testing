@@ -140,7 +140,7 @@ Um den Verlauf von Commits anzuschauen kann man den Command `git log`nutzen
 Ein weiterer nützlicher Command ist `git diff` hiermit kann man sich Änderungen anzeigen lassen, die noch nicht in die Staging Area hereingenommen wurden.
 
 ## Branches
-![Git-Branch-Image](git-branch.png)
+![Git-Branch-Image](git-branch.jpg)
 Einer der wichtigsten Features von Git sind die sogenannten Branches.
 Ein Branch represäntiert eine unabhängige Entwicklungslinie. Mit Branches kann die Entwicklung verschiedener Features abgetrennt vom "Main" Branch also dem Hauptbranch parallel durchgeführt werden und zu einem späteren Zeitpunkt mit einem **Merge** in den Main Branch integriert werden.
 
@@ -163,6 +163,28 @@ Um Änderungen im aktuellen Branch auch auf dem remote-repo (GitLab) zu pushen m
 
 ## Merging
 Um einen Branch mit einem anderen Branch wieder zu vereinen wird der Command `git merge <branchname>` ausgeführt. Wichtig hierbei ist das <branchname> der Branch ist der in den aktuellen aktiven Branch gemerged wird. Falls also ein Branch in Main gemerged werden soll, wird zuerst mit `git checkout main` in den Main Branch gewechselt bevor der Command ausgeführt wird.
+
+
+# Merge Konflikt
+![Merge Konflikt Bild](MergeKonflikt.png)
+Beim Mergen kann es zu einem Merge-Konflikt vorkommen.
+Dies passiert meistens, wenn eine Datei von zwei verschiedenen Entwicklern oder auf verschiedenen Branches verändert wurde und git nicht selber weiß wie dieser Konflikt zu lösen ist.
+Der Konflikt muss manuell in der Datei gelöst werden.
+
+Um euch zu zeigen wie man einen Konflikt im Terminal löst werden wir erstmal einen erstellen
+
+- Als erstes wird über `git branch` überprüft ob wir in unserem Branch seid.
+- Dann wird eine .txt-Datei erstellt die später gemerged werden soll
+- Diese Datei wird dann in unseren Branch gepusht
+- Als Nächstes erstellen wir einen neuen Branch mit "Name"+merge als Namen
+- Jetzt schreiben wir etwas in diese Datei und pushen sie mit dem Befehl ` git push --set-upstream origin "'Name'merge"`
+- Jetzt wechseln wir in den vorherigen Branch wieder zurück
+- Hier wird nochmal in die Datei geschrieben und gepusht
+- Jetzt werden die Branches mit `git merge "'Name'merge"` gemerged
+
+Jetzt sollte es zu einer Fehlermeldung kommen. Der automatische merge ist fehlgeschlagen und ein Mergekonflikt ist vorhanden.
+Wenn man den Befehl `git mergetool` eingibt kommt, kann man mit "Enter" vim starten um den Konflikt zu lösen. 
+
 
 
 
