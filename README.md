@@ -185,8 +185,14 @@ Um euch zu zeigen wie man einen Konflikt im Terminal löst werden wir erstmal ei
 Jetzt sollte es zu einer Fehlermeldung kommen. Der automatische merge ist fehlgeschlagen und ein Mergekonflikt ist vorhanden.
 Wenn man den Befehl `git mergetool` eingibt kommt, kann man mit "Enter" vim starten um den Konflikt zu lösen. 
 
+# Commits rückgängig machen
+`git revert <commit>` - Erstellt ein Commit bei dem die Änderungen aus dem angegebenen Commit rückgängig gemacht werden.
 
+`git checkout <commit>` - Macht Änderungen nach diesem Commit rückgängig
 
+`git reset <mode> <commit>` - Löscht alle Commits bis zu dem angegebenen Commit.  
 
-
-
+modes: soft, mixed, hard  
+soft: Bringt alle Änderungen in den Staged-Bereich  
+mixed: Alle Änderungen sind nicht im Staged-Bereich  
+hard: Alle Änderungen werden gelöscht
