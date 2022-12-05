@@ -177,7 +177,7 @@ Um euch zu zeigen wie man einen Konflikt im Terminal löst werden wir erstmal ei
 - Dann wird eine .txt-Datei erstellt die später gemerged werden soll
 - Diese Datei wird dann in unseren Branch gepusht
 - Als Nächstes erstellen wir einen neuen Branch mit "Name"+merge als Namen
-- Jetzt schreiben wir etwas in diese Datei und pusht sie mit dem Befehl ` git push --set-upstream origin "'Name'merge"`
+- Jetzt schreiben wir etwas in diese Datei und pushen sie mit dem Befehl ` git push --set-upstream origin "'Name'merge"`
 - Jetzt wechseln wir in den vorherigen Branch wieder zurück
 - Hier wird nochmal in die Datei geschrieben und gepusht
 - Jetzt werden die Branches mit `git merge "'Name'merge"` gemerged
